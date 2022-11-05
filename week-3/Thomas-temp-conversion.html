@@ -40,12 +40,14 @@
         // targetting button with btnTemp id and adding click event listener to it
         document.getElementById("btnTemp").onclick = function () {
             // getting the value of input field
-            var fahrenheit = document.getElementById("txtFahrenheit").value;
-            // on click converting faherenheit to celsius using formula and fixing the decimals to 2 digits
-            var celsius = ((parseFloat(fahrenheit) - 32 / 1.8).toFixed(2));
+            let fahrenheit = document.getElementById("txtFahrenheit").value;
+            // on click converting fahrenheit to celsius using formula and fixing the decimals to 2 digits
+            let celsius = ((parseFloat(fahrenheit) - 32 / 1.8).toFixed(2));
             // showing the result to element with id of result
             document.getElementById("result").innerHTML = celsius
+
         }
+        
     </script>
 </body>
 
