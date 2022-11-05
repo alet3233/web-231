@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../site.css">
+    <link rel="stylesheet" href="Thomas-temp-conversion.css">
+    <title>WEB 231 – Enterprise JavaScript I</title>
+</head>
+
+<body>
+    <div id="container">
+        <h1 class="app-header">Welcome to the Temperature Conversion App!</h1>
+        <div class="card">
+            <h5 class="card-title">Fahrenheit to Celsius Converter</h5>
+            <form action="#">
+                <div class="form-field">
+                    <label for="txtFahrenheit">Fahrenheit value:</label>
+                    <input type="text" id="txtFahrenheit">
+                </div>
+                <div class="form-field">
+                    <button type="submit" id="btnTemp">Convert Temperature</button>
+                </div>
+            </form>
+        </div>
+        <div class="card">
+            <h5 class="card-title">Conversion Results</h5>
+            <div class="card-content">
+                <p id="result"></p>
+            </div>
+        </div>
+        <a href="../index.html" class="return-home">Return</a>
+    </div>
+    <script>
+        document.getElementById("btnTemp").onclick = function () {
+            var fahrenheit = document.getElementById("txtFahrenheit").value;
+            var celsius = ((parseFloat(fahrenheit) - 32 / 1.8).toFixed(2));
+            document.getElementById("result").innerHTML = celsius
+        }
+    </script>
+</body>
+
+</html>
