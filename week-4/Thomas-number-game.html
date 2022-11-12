@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../site.css">
+    <link rel="stylesheet" href="Thomas-number-game.css">
+    <title>WEB 231 – Enterprise JavaScript I</title>
+</head>
+
+<body>
+    <div id="container">
+        <h1 class="app-header">Welcome to the numbers game!</h1>
+        <!-- A card where a user can input a number -->
+        <div class="card">
+            <div class="card-title">Pick a number between 1 and 10</div>
+            <div class="form-field">
+                <label for="txtMyNumber">Guess the number</label>
+                <input type="text" id="txtMyNumber">
+            </div>
+            <button type="submit" id="btnSubmit">Submit</button>
+        </div>
+        <!-- This card will be holding the results -->
+        <div class="card">
+            <div class="card-title">Results</div>
+            <div class="card-content">
+                <p id="result"></p>
+            </div>
+        </div>
+        <a href="../index.html" class="return-home">Return</a>
+    </div>
+    <script>
+        const rnd = Math.floor((Math.random() * 10) + 1); //generate a random number between 1 and 10
+        const btnSubmit = document.getElementById("btnSubmit");//getting the button with an ID of btnSubmit
+        const result = document.getElementById("result")
+        btnSubmit.addEventListener("click", function () { //added click eventlistener for btnSubmit and calling the function on it
+            const myNumber = document.getElementById("txtMyNumber").value; //getting the input value from the txtMyNumber input field
+            if (rnd < myNumber) { // checking if the random number is less than my number
+                result.textContent = "The number is less than " + myNumber; //changing the result to appropriate text
+            } else if (rnd > myNumber) { //checking to see if the random number is greater than random number
+                result.textContent = "The number is greater than " + myNumber
+            } else { //if the random and my number are equal
+                result.textContent = "Congratulations! You picked the correct number!"
+            }
+        })
+    </script>
+</body>
+
+</html>
