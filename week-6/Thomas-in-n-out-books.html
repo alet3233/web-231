@@ -153,7 +153,9 @@
         authors.style.display = "none"
         //    adding an event listener for the button
         document.getElementById("btnDisplayListing").addEventListener("click", function () {
+            // getting choice value
             let choice = document.getElementById("listing").value;
+            // checking choice value and showing the appropriate div or hiding the div
             if (choice === "books") {
                 books.style.display = "block"
                 authors.style.display = "none"
