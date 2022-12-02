@@ -1,0 +1,332 @@
+<!-- ***************************************************************************************
+*   Title: Week-7 Javazon
+*   Author: Alex Thomas
+*   Date: 11/30/2022
+*   Source Code Attribution: Classes ES6
+*   URL: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes
+*   URL: https://www.w3schools.com/js/js_classes.asp
+*   URL: https://www.youtube.com/watch?v=2ZphE5HcQPQ
+*   Source Code Attribution: switch
+*   URL: https://www.digitalocean.com/community/tutorials/how-to-use-the-switch-statement-in-javascript
+*   Other code: From week-7 instructions document
+*************************************************************************************** -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../site.css">
+    <link rel="stylesheet" href="Thomas-javazon.css">
+    <title>WEB 231 – Enterprise JavaScript I</title>
+</head>
+
+<body>
+    <div id="container">
+        <h1 class="app-header">Welcome to the Javazon App</h1>
+        <!-- card for choosing javazon products, services or employees -->
+        <div class="card">
+            <div class="card-title">Javazon Selection Form</div>
+            <div class="form-field">
+                <label for="listing">Choose a Listing</label>
+                <select name="listing" id="listing" class="drop-down-menu">
+                    <option value="select">--Select--</option>
+                    <option value="products">Products</option>
+                    <option value="services">Services</option>
+                    <option value="employees">Employees</option>
+                </select>
+            </div>
+            <div class="form-field">
+                <button type="submit" id="btnDisplayListing">Display Listing</button>
+            </div>
+        </div>
+        <a href="../index.html" class="return-home">Return</a>
+
+        <!-- Card for the products -->
+        <div id="products" class="card">
+            <div class="card-title">Javazon Products</div>
+            <table>
+                <tr>
+                    <th>Product ID</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Total Value</th>
+                </tr>
+                <tr>
+                    <td id="txtProductOneID"></td>
+                    <td id="txtProductOneDescription"></td>
+                    <td id="txtProductOnePrice"></td>
+                    <td id="txtProductOneQuantity"></td>
+                    <td id="txtProductOneTotalValue"></td>
+                </tr>
+                <tr>
+                    <td id="txtProductTwoID"></td>
+                    <td id="txtProductTwoDescription"></td>
+                    <td id="txtProductTwoPrice"></td>
+                    <td id="txtProductTwoQuantity"></td>
+                    <td id="txtProductTwoTotalValue"></td>
+                </tr>
+                <tr>
+                    <td id="txtProductThreeID"></td>
+                    <td id="txtProductThreeDescription"></td>
+                    <td id="txtProductThreePrice"></td>
+                    <td id="txtProductThreeQuantity"></td>
+                    <td id="txtProductThreeTotalValue"></td>
+                </tr>
+                <tr>
+                    <td id="txtProductFourID"></td>
+                    <td id="txtProductFourDescription"></td>
+                    <td id="txtProductFourPrice"></td>
+                    <td id="txtProductFourQuantity"></td>
+                    <td id="txtProductFourTotalValue"></td>
+                </tr>
+                <tr>
+                    <td id="txtProductFiveID"></td>
+                    <td id="txtProductFiveDescription"></td>
+                    <td id="txtProductFivePrice"></td>
+                    <td id="txtProductFiveQuantity"></td>
+                    <td id="txtProductFiveTotalValue"></td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- table for the services -->
+        <div id="services" class="card">
+            <div class="card-title">Javazon Services</div>
+            <table>
+                <tr>
+                    <th>Service ID</th>
+                    <th>Description</th>
+                    <th>Hourly Rate</th>
+                    <th>Minimum Billable hours</th>
+                </tr>
+                <tr>
+                    <td id="txtServiceOneID"></td>
+                    <td id="txtServiceOneDescription"></td>
+                    <td id="txtServiceOneHourlyRate"></td>
+                    <td id="txtServiceOneMinimumBillablehours"></td>
+                </tr>
+                <tr>
+                    <td id="txtServiceTwoID"></td>
+                    <td id="txtServiceTwoDescription"></td>
+                    <td id="txtServiceTwoHourlyRate"></td>
+                    <td id="txtServiceTwoMinimumBillablehours"></td>
+                </tr>
+                <tr>
+                    <td id="txtServiceThreeID"></td>
+                    <td id="txtServiceThreeDescription"></td>
+                    <td id="txtServiceThreeHourlyRate"></td>
+                    <td id="txtServiceThreeMinimumBillablehours"></td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Card for the employees -->
+        <div id="employees" class="card">
+            <div class="card-title">Javazon Employees</div>
+            <table>
+                <tr>
+                    <th>Employee ID</th>
+                    <th>Last Name</th>
+                    <th>First Name</th>
+                    <th>Salary</th>
+                </tr>
+                <tr>
+                    <td id="txtEmployeeOneID"></td>
+                    <td id="txtEmployeeOneLastName"></td>
+                    <td id="txtEmployeeOneFirstName"></td>
+                    <td id="txtEmployeeOneSalary"></td>
+                </tr>
+                <tr>
+                    <td id="txtEmployeeTwoID"></td>
+                    <td id="txtEmployeeTwoLastName"></td>
+                    <td id="txtEmployeeTwoFirstName"></td>
+                    <td id="txtEmployeeTwoSalary"></td>
+                </tr>
+                <tr>
+                    <td id="txtEmployeeThreeID"></td>
+                    <td id="txtEmployeeThreeLastName"></td>
+                    <td id="txtEmployeeThreeFirstName"></td>
+                    <td id="txtEmployeeThreeSalary"></td>
+                </tr>
+                <tr>
+                    <td id="txtEmployeeFourID"></td>
+                    <td id="txtEmployeeFourLastName"></td>
+                    <td id="txtEmployeeFourFirstName"></td>
+                    <td id="txtEmployeeFourSalary"></td>
+                </tr>
+                <tr>
+                    <td id="txtEmployeeFiveID"></td>
+                    <td id="txtEmployeeFiveLastName"></td>
+                    <td id="txtEmployeeFiveFirstName"></td>
+                    <td id="txtEmployeeFiveSalary"></td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+    <script>
+
+        class Product {
+            constructor(id, description, price, quantity) {
+                // initializing the values in constructor function
+                this.id = id;
+                this.description = description;
+                this.price = price;
+                this.quantity = quantity;
+                this.totalValue = (quantity * price).toFixed(2) //fixing the float to 2 decimals
+            }
+        }
+
+        class Services {
+            constructor(id, description, hourlyRate, min) {
+                this.id = id;
+                this.description = description;
+                this.hourlyRate = hourlyRate.toFixed(2); //fixing the float to 2 decimals
+                this.min = min;
+            }
+        }
+
+        class Employee {
+            constructor(id, firstName, lastName, salary) {
+                this.id = id;
+                this.firstName = firstName;
+                this.lastName = lastName;
+                this.salary = salary.toFixed(2); //fixing the float to 2 decimals
+            }
+        }
+
+        // making product, services and employees objects by passing the date to their respective classes
+        let productOne = new Product(9781118008188, "HTML and CSS: Design and Build Websites", 22.26, 10, 222.60)
+        let productTwo = new Product(9781491952023, "Javascript: The Definitive Guide 7/E", 41.33, 7, 289.31)
+        let productThree = new Product(9781449331818, "Learning Javascript Design Patterns 1/E", 25.99, 3, 77.97)
+        let productFour = new Product(9781617292422, "Express in Action: Writing, building, and testing Node.js applications 1/E", 34.91, 3, 104.73)
+        let productFive = new Product(9781491954461, "MongDB The Definitive Guide", 33.70, 8, 269.60)
+
+        let serviceOne = new Services(100, "Website Design", 150.00, 25)
+        let serviceTwo = new Services(101, "DevOps Consulting", 125.00, 50)
+        let serviceThree = new Services(102, "Database Design", 125.00, 15)
+
+        let employeeOne = new Employee(1007, "Beethoven", "Ludwig", 13.99)
+        let employeeTwo = new Employee(1008, "Bach", "Johann", 22.30)
+        let employeeThree = new Employee(1009, "Mozart", "Wolfgang", 19.50)
+        let employeeFour = new Employee(1010, "Brahms", "Johannes", 12.00)
+        let employeeFive = new Employee(1011, "Haydn", "Joseph", 32.50)
+
+        // targeting products, services and authors elements
+        let products = document.getElementById("products")
+        let services = document.getElementById("services")
+        let employees = document.getElementById("employees")
+
+        // giving the table content from object literals created from classes
+        document.getElementById("txtProductOneID").textContent = productOne.id;
+        document.getElementById("txtProductOneDescription").textContent = productOne.description;
+        document.getElementById("txtProductOnePrice").textContent = productOne.price;
+        document.getElementById("txtProductOneQuantity").textContent = productOne.quantity;
+        document.getElementById("txtProductOneTotalValue").textContent = productOne.totalValue;
+       
+        document.getElementById("txtProductTwoID").textContent = productOne.id;
+        document.getElementById("txtProductTwoDescription").textContent = productTwo.description;
+        document.getElementById("txtProductTwoPrice").textContent = productTwo.price;
+        document.getElementById("txtProductTwoQuantity").textContent = productTwo.quantity;
+        document.getElementById("txtProductTwoTotalValue").textContent = productTwo.totalValue;
+
+        document.getElementById("txtProductThreeID").textContent = productThree.id;
+        document.getElementById("txtProductThreeDescription").textContent = productThree.description;
+        document.getElementById("txtProductThreePrice").textContent = productThree.price;
+        document.getElementById("txtProductThreeQuantity").textContent = productThree.quantity;
+        document.getElementById("txtProductThreeTotalValue").textContent = productThree.totalValue;
+
+        document.getElementById("txtProductFourID").textContent = productFour.id;
+        document.getElementById("txtProductFourDescription").textContent = productFour.description;
+        document.getElementById("txtProductFourPrice").textContent = productFour.price;
+        document.getElementById("txtProductFourQuantity").textContent = productFour.quantity;
+        document.getElementById("txtProductFourTotalValue").textContent = productFour.totalValue;
+
+        document.getElementById("txtProductFiveID").textContent = productFive.id;
+        document.getElementById("txtProductFiveDescription").textContent = productFive.description;
+        document.getElementById("txtProductFivePrice").textContent = productFive.price;
+        document.getElementById("txtProductFiveQuantity").textContent = productFive.quantity;
+        document.getElementById("txtProductFiveTotalValue").textContent = productFive.totalValue;
+
+        document.getElementById("txtServiceOneID").textContent = serviceOne.id;
+        document.getElementById("txtServiceOneDescription").textContent = serviceOne.description;
+        document.getElementById("txtServiceOneHourlyRate").textContent = serviceOne.hourlyRate;
+        document.getElementById("txtServiceOneMinimumBillablehours").textContent = serviceOne.min;
+        
+        document.getElementById("txtServiceTwoID").textContent = serviceTwo.id;
+        document.getElementById("txtServiceTwoDescription").textContent = serviceTwo.description;
+        document.getElementById("txtServiceTwoHourlyRate").textContent = serviceTwo.hourlyRate;
+        document.getElementById("txtServiceTwoMinimumBillablehours").textContent = serviceTwo.min;
+
+        document.getElementById("txtServiceThreeID").textContent = serviceThree.id;
+        document.getElementById("txtServiceThreeDescription").textContent = serviceThree.description;
+        document.getElementById("txtServiceThreeHourlyRate").textContent = serviceThree.hourlyRate;
+        document.getElementById("txtServiceThreeMinimumBillablehours").textContent = serviceThree.min;
+
+        document.getElementById("txtEmployeeOneID").textContent = employeeOne.id;
+        document.getElementById("txtEmployeeOneLastName").textContent = employeeOne.lastName;
+        document.getElementById("txtEmployeeOneFirstName").textContent = employeeOne.firstName;
+        document.getElementById("txtEmployeeOneSalary").textContent = employeeOne.salary;
+
+        document.getElementById("txtEmployeeTwoID").textContent = employeeTwo.id;
+        document.getElementById("txtEmployeeTwoLastName").textContent = employeeTwo.lastName;
+        document.getElementById("txtEmployeeTwoFirstName").textContent = employeeTwo.firstName;
+        document.getElementById("txtEmployeeTwoSalary").textContent = employeeTwo.salary;
+
+        document.getElementById("txtEmployeeThreeID").textContent = employeeThree.id;
+        document.getElementById("txtEmployeeThreeLastName").textContent = employeeThree.lastName;
+        document.getElementById("txtEmployeeThreeFirstName").textContent = employeeThree.firstName;
+        document.getElementById("txtEmployeeThreeSalary").textContent = employeeThree.salary;
+
+        document.getElementById("txtEmployeeFourID").textContent = employeeFour.id;
+        document.getElementById("txtEmployeeFourLastName").textContent = employeeFour.lastName;
+        document.getElementById("txtEmployeeFourFirstName").textContent = employeeFour.firstName;
+        document.getElementById("txtEmployeeFourSalary").textContent = employeeFour.salary;
+
+        document.getElementById("txtEmployeeFiveID").textContent = employeeFive.id;
+        document.getElementById("txtEmployeeFiveLastName").textContent = employeeFive.lastName;
+        document.getElementById("txtEmployeeFiveFirstName").textContent = employeeFive.firstName;
+        document.getElementById("txtEmployeeFiveSalary").textContent = employeeFive.salary;
+        // on page load hiding the products, services, employees
+        products.style.display = "none"
+        services.style.display = "none"
+        employees.style.display = "none"
+        //    adding an event listener for the button
+        document.getElementById("btnDisplayListing").addEventListener("click", function () {
+            // getting choice value
+            let choice = document.getElementById("listing").value;
+            // checking choice value with switch condition and showing the appropriate div or hiding the div
+            switch(choice) {
+                case "products": //checking if the selected value is products, displaying products and hiding others
+                    products.style.display = "block";
+                    services.style.display = "none";
+                    employees.style.display = "none";
+                    break;
+                case "services":
+                    products.style.display = "none";
+                    services.style.display = "block";
+                    employees.style.display = "none";
+                    break;
+                case "employees":
+                    products.style.display = "none";
+                    services.style.display = "none";
+                    employees.style.display = "block";
+                    break;
+                default: //be default, or any other case than above, all will hidden
+                    products.style.display = "none";
+                    services.style.display = "none";
+                    employees.style.display = "none";
+            }
+        }
+        )
+    </script>
+</body>
+
+</html>
