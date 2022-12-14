@@ -1,0 +1,129 @@
+<!-- ***************************************************************************************
+*   Title: Week-9 Card Game
+*   Author: Alex Thomas
+*   Date: 12/14/2022
+*   Source Code Attribution: this keyword
+*   URL: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this
+*   URL: https://stackoverflow.com/questions/36489579/this-within-es6-class-method
+*   Source Code Attribution: ES6 classes and their methods
+*   URL: https://googlechrome.github.io/samples/classes-es6/
+*   Source Code Attribution: for/of loop
+*   URL: https://hacks.mozilla.org/2015/04/es6-in-depth-iterators-and-the-for-of-loop/
+*   Other code: From week-9 instructions document
+*************************************************************************************** -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.1.96/css/materialdesignicons.min.css" integrity="sha512-NaaXI5f4rdmlThv3ZAVS44U9yNWJaUYWzPhvlg5SC7nMRvQYV9suauRK3gVbxh7qjE33ApTPD+hkOW78VSHyeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../site.css">
+    <link rel="stylesheet" href="Thomas-card-game.css">
+    <title>WEB 231 – Enterprise JavaScript I</title>
+</head>
+
+<body>
+    <div id="container">
+        <h1 class="app-header">Welcome to the Card Game!</h1>
+        <!-- card for making the card deal -->
+        <div class="card">
+            <div class="card-title">Card Dealer</div>
+
+            <div class="form-field">
+                <button type="submit" id="btnDealCards">Deal Cards</button>
+            </div>
+        </div>
+        <a href="../index.html" class="return-home">Return</a>
+
+        <!-- Shuffled cards card -->
+        <div class="card">
+            <div class="card-title">Shuffled Cards</div>
+            <div class="card-content" id="player-card-container"></div>
+        </div>
+
+
+    </div>
+    <script>
+        // card class to initialize face and suit
+        class Card {
+            constructor(face, suit) {
+                this.face = face;
+                this.suit = suit;
+            }
+        }
+
+        // dealer class to initialize cards and and get them
+        class Dealer {
+            constructor() {
+                this.CARD_COUNT = 52;
+                this.cards = [];
+                this.faces = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K"];
+                this.suits = ["Hearts", "Diamonds", "Clubs", "Spades"]
+                this.getDeckOfCards()
+            }
+
+            // method of dealer to loop through cards and add it to cards array
+            getDeckOfCards() {
+                for (let count = 0; count < this.CARD_COUNT; count++) {
+                    this.cards[count] = new Card(this.faces[count % 13], this.suits[Math.floor(count / 13)])
+                }
+            }
+
+            // shuffling the cards randomly
+            shuffle() {
+                for (let i = 0; i < this.CARD_COUNT; i++) {
+                    let j = Math.floor(Math.random() * (i+1));
+                    [this.cards[i], this.cards[j]] = [this.cards[j], this.cards[i]]
+                }
+            }
+
+            // building the cards with provided card information, color etc
+            buildPlayingCard(card, suitIcon, faceColor, suitColor) {
+                return `<div class="card player-card">
+                <div class="card-title" style="text-align: left; font-size: 20px; padding-left: 10px ;color: ${faceColor}">
+                    ${card.face}
+                    </div>
+                    <div class="card-content">
+                            <span class="${suitIcon}" style="color: ${suitColor}"></span>
+                        </div>
+                </div> `
+            }
+        }
+
+        // adding event listener to dealcard button to make the cards
+        document.getElementById("btnDealCards").addEventListener("click", function () {
+            let dealer = new Dealer()
+            dealer.shuffle();
+            console.log(dealer.cards)
+            let cardOutputWithIcon = ""
+            
+            // looping throught all the cards
+            for (var card of dealer.cards) {
+                // checking it's card suit and passing properties according to that to build that card.
+                switch (card.suit) {
+                    case "Hearts":
+                        cardOutputWithIcon += dealer.buildPlayingCard(card, "mdi mdi-cards-heart", "red", "red");
+                        break;
+                    case "Diamonds":
+                        cardOutputWithIcon += dealer.buildPlayingCard(card, "mdi mdi-cards-diamonds", "red", "red");
+                        break;
+                    case "Clubs":
+                        cardOutputWithIcon += dealer.buildPlayingCard(card, "mdi mdi-cards-club", "black", "black");
+                        break;
+                    case "Spades":
+                        cardOutputWithIcon += dealer.buildPlayingCard(card, "mdi mdi-cards-spade", "black", "black");
+                        break;
+                }
+            }
+            // adding it to page to player-card-container the whole string generated
+            document.getElementById("player-card-container").innerHTML = cardOutputWithIcon;
+        })
+    </script>
+</body>
+
+</html>
